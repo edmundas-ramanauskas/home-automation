@@ -6,10 +6,10 @@ import { call, debounce, put, takeEvery } from 'redux-saga/effects';
 import { getDevices as fetchDevices, updateDevice } from '../../api';
 
 // types
-export const UPDATE_DEVICES = 'LIGHTS/UPDATE_DEVICES';
-export const SELECT_DEVICE = 'LIGHTS/SELECT_DEVICE';
-export const TOGGLE_DEVICE = 'LIGHTS/TOGGLE_DEVICE';
-export const SET_BRIGHTNESS = 'LIGHTS/SET_BRIGHTNESS';
+export const UPDATE_DEVICES = 'LIGHTING/UPDATE_DEVICES';
+export const SELECT_DEVICE = 'LIGHTING/SELECT_DEVICE';
+export const TOGGLE_DEVICE = 'LIGHTING/TOGGLE_DEVICE';
+export const SET_BRIGHTNESS = 'LIGHTING/SET_BRIGHTNESS';
 
 // actions
 export const updateDevices = devices => ({
@@ -87,7 +87,7 @@ export const reducer = combineReducers({
 });
 
 // selectors
-const modulePath = prop('lights');
+const modulePath = prop('lighting');
 
 export const getDevices = createSelector(
   modulePath,

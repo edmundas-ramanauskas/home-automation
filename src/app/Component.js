@@ -11,7 +11,7 @@ import Header from '../modules/header';
 const history = createBrowserHistory();
 const { store } = configStore(history);
 
-const Lights = Loadable(() => import('../modules/lights'));
+const Lighting = Loadable(() => import('../modules/lighting'));
 
 class App extends Component {
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
             <ConnectedRouter history={history}>
               <Switch>
                 <Route exact path="/" render={() => <div>Main Page</div>} />
-                <Route path="/lights" component={Lights} />
+                <Route path="/lighting" component={Lighting} />
                 <Route render={() => <div>Not Found</div>} />
               </Switch>
             </ConnectedRouter>

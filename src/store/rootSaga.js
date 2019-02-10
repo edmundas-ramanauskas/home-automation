@@ -1,8 +1,8 @@
 import { map } from 'ramda';
 import { all, fork, put } from 'redux-saga/effects';
-import { saga as lights } from '../modules/lights';
+import { saga as lighting } from '../modules/lighting';
 
-const sagas = [lights];
+const sagas = [lighting];
 
 const forkAllModuleSagas = map(fork);
 

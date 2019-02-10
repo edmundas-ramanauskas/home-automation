@@ -5,7 +5,7 @@ import getColumns from './columns';
 import { Box, Wrapper } from './styled';
 import Brightness from './brightness';
 
-const Lights = ({ devices, selected, onSelectDevice, onToggleDevice }) => (
+const Lighting = ({ devices, selected, onSelectDevice, onToggleDevice }) => (
   <Wrapper>
     <Box width={60}>
       <Table
@@ -20,11 +20,11 @@ const Lights = ({ devices, selected, onSelectDevice, onToggleDevice }) => (
   </Wrapper>
 );
 
-Lights.propTypes = {
+Lighting.propTypes = {
   devices: PropTypes.arrayOf(PropTypes.object).isRequired,
   selected: PropTypes.number,
   onSelectDevice: PropTypes.func.isRequired,
   onToggleDevice: PropTypes.func.isRequired,
 };
 
-export default Lights;
+export default Lighting;
