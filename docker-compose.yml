@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: yarn start
+    ports:
+      - "8000:3000"
+    volumes:
+      - ./:/home/app
+      - node_modules_webapp:/home/app/node_modules
+
+networks:
+  default:
+
+volumes:
+  node_modules_webapp:
