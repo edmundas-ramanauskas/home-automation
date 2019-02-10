@@ -1,6 +1,5 @@
-
 import Base from './Base';
-import {API_URL} from '../config';
+import { API_URL } from '../config';
 
 export default class Tweets extends Base {
   base = API_URL;

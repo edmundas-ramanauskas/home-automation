@@ -1,8 +1,10 @@
 import { once } from 'ramda';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
+import createSagaMiddleware from 'redux-saga';
 import logger from '../lib/logger';
 import createReducer from './rootReducer';
+import saga from './rootSaga';
 
 // basic logger middleware
 const loggerMiddleware = () => next => action => {
@@ -10,6 +12,8 @@ const loggerMiddleware = () => next => action => {
   logger.debug('ACTION', type, params);
   return next(action);
 };
+
+const sagaMiddleware = createSagaMiddleware();
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,10 +24,16 @@ export default once(history => {
     composeEnhancer(
       applyMiddleware(
         loggerMiddleware,
+        sagaMiddleware,
         routerMiddleware(history),
       ),
     ),
   );
+
+  sagaMiddleware.run(saga);
+  // rootTask.done.catch(error => {
+  //   logger.error('UNCAUGHT SAGA ERROR', error);
+  // });
 
   return { store };
 });

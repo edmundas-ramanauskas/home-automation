@@ -46,7 +46,7 @@ export default class Base {
 
   _request({
     data,
-    headers = {},
+    headers = { 'Content-Type': 'application/json' },
     method = 'GET',
     path,
   }) {
@@ -60,18 +60,20 @@ export default class Base {
       headers,
       body,
       method,
-    }).then(async response => {
-      const { status: code } = response;
-      if (response.ok && code >= 200 && code < 300) {
-        try {
-          const data = await response.json();
-          return { data };
-        } catch (error) {
-          throw new Error('Error parsing response body');
+    })
+      .then(async response => {
+        const { status: code } = response;
+        if (response.ok && code >= 200 && code < 300) {
+          try {
+            const data = await response.json();
+            return { data };
+          } catch (error) {
+            throw new Error('Error parsing response body');
+          }
         }
-      }
-    }).catch(({ message = 'Network error' }) => {
-      return { error: { message, code: 0 } };
-    });
+      })
+      .catch(({ message = 'Network error' }) => {
+        return { error: { message, code: 0 } };
+      });
   }
 }
