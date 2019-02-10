@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider as ReduxProvider } from 'react-redux';
+import { Route, Switch } from 'react-router';
+import { ConnectedRouter } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
+import { Container, Provider as RenditionProvider } from 'rendition';
+import { configStore } from '../store';
+import Header from '../modules/header';
+
+const history = createBrowserHistory();
+const { store } = configStore(history);
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <ReduxProvider store={store}>
+        <RenditionProvider>
+          <Header />
+          <Container>
+            <ConnectedRouter history={history}>
+              <Switch>
+                <Route exact path="/" render={() => <div>Main Page</div>} />
+                <Route render={() => <div>Not Found</div>} />
+              </Switch>
+            </ConnectedRouter>
+          </Container>
+        </RenditionProvider>
+      </ReduxProvider>
     );
   }
 }
