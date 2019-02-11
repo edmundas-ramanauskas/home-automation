@@ -103,7 +103,7 @@ export const getSelectedDevice = createSelector(
 );
 
 // sagas
-function* fetchDevicesSaga() {
+export function* fetchDevicesSaga() {
   const { data, error } = yield call(fetchDevices);
   if (error || data.errors) {
     // do something
@@ -112,7 +112,7 @@ function* fetchDevicesSaga() {
   yield put(updateDevices(data.data));
 }
 
-function* updateDeviceSaga({ id, ...props }) {
+export function* updateDeviceSaga({ id, ...props }) {
   yield call(updateDevice, id, pick(['active', 'brightness'])(props));
 }
 
