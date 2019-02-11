@@ -5,6 +5,7 @@ export const Box = styled.div({});
 export const Wrapper = styled.div({
   backgroundColor: '#262626',
   color: '#C7C6C7',
+  marginBottom: '1em',
 });
 
 export const NavBar = styled.div({

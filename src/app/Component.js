@@ -3,8 +3,9 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
-import { Container, Provider as RenditionProvider } from 'rendition';
+import { Provider as RenditionProvider } from 'rendition';
 import Loadable from '../lib/asyncComponent';
+import Container from '../lib/components/container';
 import { configStore } from '../store';
 import Header from '../modules/header';
 
@@ -22,7 +23,7 @@ class App extends Component {
           <Container>
             <ConnectedRouter history={history}>
               <Switch>
-                <Route exact path="/" render={() => <div>Main Page</div>} />
+                <Route exact path="/" component={Lighting} />
                 <Route path="/lighting" component={Lighting} />
                 <Route render={() => <div>Not Found</div>} />
               </Switch>

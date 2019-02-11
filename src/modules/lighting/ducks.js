@@ -119,5 +119,6 @@ function* updateDeviceSaga({ id, ...props }) {
 export function* saga() {
   yield call(fetchDevicesSaga);
   yield takeEvery(TOGGLE_DEVICE, updateDeviceSaga);
+  // debounce so it doesn't flood the backend with requests
   yield debounce(500, SET_BRIGHTNESS, updateDeviceSaga);
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container } from 'rendition';
 import DateFormat from '../../lib/components/date-format';
 import TimeFormat from '../../lib/components/time-format';
+import Container from '../../lib/components/container';
 import { Box, NavBar, Wrapper } from './styled';
 
 const now = Date.now();
